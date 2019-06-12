@@ -1,17 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center" >
-  <h1 class="lst">
-    Welcome to {{ title }}!
+  <h1 class="lst"> 
+      <mat-card-title> Welcome to {{ title }}!</mat-card-title>
+  
   </h1>
-  <img  src="assets/img/todolist.png" width="300" class="st">
+
+  <img mat-card-lg-image src="assets/img/todolist.png" width="300" class="st">
+
 </div>
+<mat-card>
 <h2>New Task: </h2>
 
-<p  *ngFor= "let task of tasks" >
-    {{task}}
-  <button (click)="RemoveTask(task)">x</button>
+  <mat-form-field>
+  <input  matInput placeholder="Task Name" [(ngModel)]="newTask" />
+  </mat-form-field >
 
+  <mat-form-field >
+  <input  matInput placeholder="New Priority" [(ngModel)]="priority"/>
+  </mat-form-field>
+  
+<button mat-fab  color="primary" (click) = "addTasks()"><mat-icon>add</mat-icon></button>
+</mat-card>
 
+<mat-card>
+  <p  *ngFor="let task of tasks" >
+    {{ task.taskname }}
+    {{ task.taskpriority }}
+  
+    <button mat-mini-fab color="accent" (click)="RemoveTask(task)"><mat-icon>remove</mat-icon></button>
+    <button mat-mini-fab color="accent" (click)="EditTask(task)"><mat-icon>edit</mat-icon></button>
+  </p>
+</mat-card>
 
-
+ <div *ngIf="nothing">
+<h3>The list is empty!!</h3>
+ </div>
 <router-outlet></router-outlet>
