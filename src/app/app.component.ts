@@ -1,6 +1,4 @@
 import { Component } from '@angular/core'; 
-import { addListener } from 'cluster';
-import { ViewEncapsulation } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-root',
